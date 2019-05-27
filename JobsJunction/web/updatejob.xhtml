@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Update Job</title>
+        <style type="text/css">
+            .form-signin {
+                margin: 0 auto;
+                max-width: 330px;
+                padding: 15px;
+            }
+
+            .ui-datalist {
+                width:300px;
+                margin-bottom: 20px;
+            }
+
+            .ui-datalist-item {
+                padding:3px;
+            }
+
+            .paginated .ui-datalist-data {
+                padding-left: 20px;
+            }
+
+        </style>
+    </h:head>
+    <h:body>
+         <ui:include src="header.xhtml" />
+         
+        <b:container style="padding-top: 20px;">
+            <h:form id="form" styleClass="form-signin" prependId="false">
+               
+               
+	
+           
+                <h2>Update Job Details</h2>
+                <b:inputText id="job_id" value="#{jobController.job.job_id}" placeholder="#{jobController.job.job_id}"  required="true" requiredMessage="This field cannot be empty">
+                    <f:facet name="prepend">
+                        <b:icon name="envelope" />
+                    </f:facet>
+                </b:inputText>
+                <b:inputText id="name" value="#{jobController.job.comp_name}" placeholder="#{jobController.job.comp_name}"  required="true" requiredMessage="This field cannot be empty">
+                    <f:facet name="prepend">
+                        <b:icon name="user" />
+                    </f:facet>
+                </b:inputText>
+                <b:inputText id="email" value="#{jobController.job.job_description}" placeholder="#{jobController.job.job_description}"  required="true" requiredMessage="This field cannot be empty">
+                    <f:facet name="prepend">
+                        <b:icon name="envelope" />
+                    </f:facet>
+                </b:inputText>
+                <b:inputText id="contact" value="#{jobController.job.job_location}" placeholder="#{jobController.job.job_location}"  required="true" requiredMessage="This field cannot be empty">
+                    <f:facet name="prepend">
+                        <b:icon name="phone-alt" />
+                    </f:facet>
+                </b:inputText>
+                <b:inputText id="description" value="#{jobController.job.requirement}" placeholder="#{jobController.job.requirement}"  required="true" requiredMessage="This field cannot be empty">
+                    <f:facet name="prepend">
+                        <b:icon name="education" />
+                    </f:facet>
+                </b:inputText>
+                <b:inputText id="address" value="#{jobController.job.skills}" placeholder="#{jobController.job.skills}"  required="true" requiredMessage="This field cannot be empty">
+                    <f:facet name="prepend">
+                        <b:icon name="home" />
+                    </f:facet>
+                </b:inputText>
+                <b:inputText id="skills" value="#{jobController.job.salary}" placeholder="#{jobController.job.salary}"  required="true" requiredMessage="This field cannot be empty">
+                    <f:facet name="prepend">
+                        <b:icon name="briefcase" />
+                    </f:facet>
+                </b:inputText>
+                <b:inputText id="vacancies" value="#{jobController.job.no_of_vacancies}" placeholder="#{jobController.job.no_of_vacancies}" required="true" required-message="This field cannot be empty">
+                    <f:facet name="prepend">
+                        <b:iconAwesome name="" />
+                    </f:facet>
+                </b:inputText>
+                <b:row style="padding-top:5px">
+
+                <b:datepicker id="cdate3" mode="popup"
+                              firstDay="1" value="#{jobController.job.last_date}" required="true"
+                              label-col-sm="4" col-sm="4" showButtonPanel="true" placeholder="#{jobController.job.last_date}" changeMonth="true" changeYear="true" large-screen="full-width" >
+                </b:datepicker></b:row>
+                <b:commandButton id="updateButton" look="primary btn-block" value="Update" action="#{jobController.updateJob()}" icon="log-in" size="sm"/>
+                 
+            </h:form>
+        </b:container>
+    </h:body>
+</html>

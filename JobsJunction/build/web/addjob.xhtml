@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Add Job form for Employer</title>
+        <meta name="author" content="Riccardo Massera"></meta>
+        <style type="text/css">
+            .form-signin {
+                margin: 0 auto;
+                max-width: 330px;
+                padding: 15px;
+            }
+        </style>
+    </h:head>
+    <h:body>
+         <ui:include src="header.xhtml" />
+       
+        <b:container style="padding-top: 20px;">
+            <h:form styleClass="form-signin" prependId="false">
+                <h:message for="registerButton" ></h:message>
+                <h2>Add Job</h2>
+                <b:inputText id="job_id" value="#{jobController.job_id}" placeholder="Job Id"  required="true" requiredMessage="This field cannot be empty">
+                    <f:facet name="prepend">
+                        <b:icon name="envelope" />
+                    </f:facet>
+                </b:inputText>
+                <b:inputText id="description" value="#{jobController.job_description}" placeholder="Job Description"  required="true" requiredMessage="This field cannot be empty">
+                    <f:facet name="prepend">
+                        <b:icon name="envelope" />
+                    </f:facet>
+                </b:inputText>
+                <b:inputText id="qualification" value="#{jobController.requirement}" placeholder="Required Experience"  required="true" requiredMessage="This field cannot be empty">
+                    <f:facet name="prepend">
+                        <b:icon name="education" />
+                    </f:facet>
+                </b:inputText>
+                <b:selectOneMenu value="#{jobController.comp_name}">
+                    <f:selectItem itemLabel="Select Company" itemValue="" />
+                    <f:selectItems value="#{companyController.companiesList}" var="emp" itemValue="#{emp.name}" itemLabel="#{emp.name}"/>
+                </b:selectOneMenu>
+                <b:inputText id="address" value="#{jobController.job_location}" placeholder="Job Location"  required="true" requiredMessage="This field cannot be empty">
+                    <f:facet name="prepend">
+                        <b:icon name="home" />
+                    </f:facet>
+                </b:inputText>
+                <b:inputTextarea id="skills" value="#{jobController.skills}"  placeholder="Required Skill Set"  rows="3"  required="true" requiredMessage="This field cannot be empty">
+                    <f:facet name="prepend">
+                        <b:icon name="home" />
+                    </f:facet>
+                </b:inputTextarea>
+                <b:inputText id="salary" value="#{jobController.salary}" placeholder="Salary Package"  required="true" requiredMessage="This field cannot be empty">
+                    <f:facet name="prepend">
+                        <b:icon name="briefcase" />
+                    </f:facet>
+                </b:inputText>
+                <b:inputText id="no_of_vacancies" value="#{jobController.no_of_vacancies}" placeholder="No. of vacancies"  required="true" requiredMessage="This field cannot be empty">
+                    <f:facet name="prepend">
+                        <b:icon name="briefcase" />
+                    </f:facet>
+                </b:inputText>
+                <b:row style="padding-top:5px">
+
+                <b:datepicker id="cdate3" mode="popup"
+                              firstDay="1" value="#{jobController.last_date}" required="true"
+                              label-col-sm="4" col-sm="4" showButtonPanel="true" placeholder="Enter Last Date" changeMonth="true" changeYear="true" large-screen="full-width" >
+                </b:datepicker></b:row>
+               <b:commandButton id="registerButton"  look="primary btn-block" value="Add Job" action="#{jobController.save()}" icon="log-in" size="lg"/>
+                
+            </h:form>
+        </b:container>
+    </h:body>
+</html>

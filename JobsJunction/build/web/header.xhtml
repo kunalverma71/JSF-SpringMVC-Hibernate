@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    
+           
+    
+    <h:head>
+        <title>Jobs Junction</title>
+        <style>
+body {margin: 0;}
+
+ul.topnav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+ul.topnav li {float: left;}
+
+ul.topnav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul.topnav li a:hover:not(.active) {background-color: #111;}
+
+ul.topnav li a.active {background-color: #4CAF50;}
+
+ul.topnav li.right {float: right;}
+
+* {box-sizing: border-box;}
+body {font-family: Verdana, sans-serif;}
+.mySlides {display: none;}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+
+@media screen and (max-width: 600px) {
+  ul.topnav li.right, 
+  ul.topnav li {float: none;}
+}
+</style>
+  
+    </h:head>
+    <h:body>
+        <ul class="topnav">
+            <h:form>
+            <li><h:commandLink class="active" action="index" value="Home"></h:commandLink></li>
+            <li><h:commandLink action="contact" value="Contact Us"></h:commandLink></li>
+            <li><h:commandLink action="contact" value="About Us"></h:commandLink></li>
+            <li class="right"><h:commandLink rendered="#{not empty loggedin}" action="#{applicantController.logout()}" value="Logout"></h:commandLink></li>
+            <li class="right"><h:commandLink rendered="#{empty loggedin}" action="showregister" value="Sign Up"></h:commandLink></li>
+            <li class="right"><h:commandLink  rendered="#{empty loggedin}" action="showlogin" value="Sign In"></h:commandLink></li>
+            <li class="right"><h:commandLink rendered="#{role == 'C'}" action="addjob" value="AddJob"></h:commandLink></li>
+            <li class="right"><h:commandLink rendered="#{role == 'C'}" action="applicants_list" value="All Candidates"></h:commandLink></li>
+            <li class="right"><h:commandLink rendered="#{role == 'C'}" action="interested_candidates" value="Interested Candidates"></h:commandLink></li>
+            <li class="right"><h:commandLink rendered="#{role == 'A'}" action="jobs_list" value="List of Jobs"></h:commandLink></li>
+            <li class="right"><h:commandLink rendered="#{role == 'C'}" action="jobs_list_company" value="List of Jobs"></h:commandLink></li>
+            <li class="right"><h:commandLink rendered="#{not empty loggedin}" action="#" value="Welcome #{name}"></h:commandLink></li>
+            </h:form>
+        </ul>
+    </h:body>
+</html>
+

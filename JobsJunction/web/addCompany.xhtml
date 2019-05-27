@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>User Registration</title>
+        <meta name="author" content="Riccardo Massera"></meta>
+        <style type="text/css">
+            .form-signin {
+                margin: 0 auto;
+                max-width: 330px;
+                padding: 15px;
+            }
+        </style>
+    </h:head>
+    <h:body>
+         <ui:include src="header.xhtml" />
+       
+        <b:container style="padding-top: 20px;">
+            <h:form styleClass="form-signin" prependId="false">
+                <h:message for="registerButton" ></h:message>
+                <h2>Employer Registration</h2>
+                <b:inputText id="name" value="#{companyController.name}" placeholder="Name"  required="true" requiredMessage="This field cannot be empty">
+                    <f:facet name="prepend">
+                        <b:icon name="user" />
+                    </f:facet>
+                </b:inputText>
+                <b:inputText id="email" value="#{companyController.email}" placeholder="Email address"  required="true" requiredMessage="This field cannot be empty">
+                    <f:facet name="prepend">
+                        <b:icon name="envelope" />
+                    </f:facet>
+                </b:inputText>
+                <b:inputText id="contact" value="#{companyController.contact}" placeholder="Contact No."  required="true" requiredMessage="This field cannot be empty">
+                    <f:facet name="prepend">
+                        <b:icon name="phone-alt" />
+                    </f:facet>
+                </b:inputText>
+                <b:inputText id="proile" value="#{companyController.profile}" placeholder="Company Profile"  required="true" requiredMessage="This field cannot be empty">
+                    <f:facet name="prepend">
+                        <b:icon name="education" />
+                    </f:facet>
+                </b:inputText>
+                <b:inputTextarea id="address" value="#{companyController.address}" rows="3"  required="true" requiredMessage="This field cannot be empty">
+                    <f:facet name="prepend">
+                        <b:icon name="home" />
+                    </f:facet>
+                </b:inputTextarea>
+               <b:inputText id="password" value="#{companyController.password}" placeholder="Password" type="password" required="true" required-message="This field cannot be empty">
+                    <f:facet name="prepend">
+                        <b:iconAwesome name="key" />
+                    </f:facet>
+                </b:inputText>
+                <b:selectBooleanCheckbox value="true" caption="remember me"/>
+                <b:commandButton id="registerButton" look="primary btn-block" value="Sign Up" action="#{companyController.save()}" icon="log-in" size="lg"/>
+                
+            </h:form>
+        </b:container>
+    </h:body>
+</html>

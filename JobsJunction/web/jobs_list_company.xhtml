@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui = "http://java.sun.com/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
+    
+    
+    <h:head>
+        <title>List of Jobs</title>
+    </h:head>
+    <h:body>
+      
+  
+        <ui:include src="header.xhtml" />
+        <h:form> 
+            <p:dataTable var="job" value="#{jobController.jobsListC}" lazy="true" rows="10" >
+            <p:column headerText="No." style="width:5px;">
+        <h:outputText value="#{index=index+1}" />
+    </p:column>
+    <p:column headerText="Company Name" style="width:40px;">
+        <h:outputText value="#{job.comp_name}" />
+    </p:column>
+
+    <p:column headerText="Description" style="width:60px;">
+        <h:outputText value="#{job.job_description}" />
+    </p:column>
+
+    
+    <p:column headerText="Required Experience" style="width:40px;">
+        <h:outputText value="#{job.requirement}" />
+    </p:column>
+  
+    <p:column headerText="Required Skills" style="width:80px;">
+        <h:outputText value="#{job.skills}" />
+    </p:column>
+        
+    <p:column headerText="Salary Package" style="width:50px;">
+        <h:outputText value="#{job.salary}" />
+    </p:column>
+    <p:column headerText="Job Location" style="width:50px;">
+        <h:outputText value="#{job.job_location}" />
+    </p:column>
+    <p:column headerText="Last Date" style="width:50px;">
+        <h:outputText value="#{job.last_date}" />
+    </p:column>
+    <p:column headerText="Vacancies" style="width:50px;">
+        <h:outputText value="#{job.no_of_vacancies}" />
+    </p:column>
+    <p:column headerText="Action" style="width:50px;">
+        <b:commandLink value="Update" rendered="#{role == 'C'}" look="primary btn-block" action="#{jobController.showJob(job.job_id)}"></b:commandLink>
+        <b:commandLink value="Apply" rendered="#{role == 'A'}" look="primary btn-block" action="#{interviewController.applyJob(job.job_id)}"></b:commandLink>
+    </p:column>
+        </p:dataTable>
+
+
+        </h:form>
+    </h:body>
+</html>
+

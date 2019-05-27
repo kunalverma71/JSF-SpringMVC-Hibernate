@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.connection.driver_class">org.h2.Driver</property>
+    <property name="hibernate.connection.url">jdbc:h2:tcp://localhost/~/JobsJunction</property>
+    <property name="hibernate.connection.username">sa</property>
+    <property name="hibernate.connection.autocommit">true</property>
+    <property name="hibernate.hbm2ddl.auto">update</property>
+    <property name="hibernate.show_aql">true</property>
+    <mapping class="entities.Applicant"></mapping>
+    <mapping class="entities.Company"></mapping>
+    <mapping class="entities.Job_Profile"></mapping>
+    <mapping class="entities.Applicant_Qualification"></mapping>
+    <mapping class="entities.Interview"></mapping>
+  </session-factory>
+</hibernate-configuration>

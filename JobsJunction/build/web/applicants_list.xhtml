@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui = "http://java.sun.com/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
+    
+    
+    <h:head>
+        <title>List of Candidates</title>
+    </h:head>
+    <h:body>
+      
+  
+        <ui:include src="header.xhtml" />
+        <h:form> 
+            <p:dataTable var="apl" value="#{applicantController.applicantsList}" lazy="true" rows="10" >
+            <p:column headerText="No." style="width:5px;">
+        <h:outputText value="#{index=index+1}" />
+    </p:column>
+    <p:column headerText="Name" style="width:40px;">
+        <h:outputText value="#{apl.name}" />
+    </p:column>
+
+    <p:column headerText="Email Id" style="width:60px;">
+        <h:outputText value="#{apl.email}" />
+    </p:column>
+
+    
+    <p:column headerText="Address" style="width:40px;">
+        <h:outputText value="#{apl.address}" />
+    </p:column>
+  
+    <p:column headerText="Contact" style="width:80px;">
+        <h:outputText value="#{apl.contact}" />
+    </p:column>
+        
+    <p:column headerText="D.O.B" style="width:50px;">
+        <h:outputText value="#{apl.date_of_birth}" />
+    </p:column>
+    <p:column headerText="Action" style="width:50px;">
+        <b:commandLink value="Show" rendered="#{role == 'C'}" look="primary btn-block" action="#{applicantController.showApplicant(apl.email)}"></b:commandLink>
+    </p:column>
+        </p:dataTable>
+
+
+        </h:form>
+    </h:body>
+</html>
+

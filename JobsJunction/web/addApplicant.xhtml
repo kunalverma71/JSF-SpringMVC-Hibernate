@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:c="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Applicant Registration</title>
+        <style type="text/css">
+            .form-signin {
+                margin: 0 auto;
+                max-width: 330px;
+                padding: 15px;
+            }
+        </style>
+    </h:head>
+    <h:body>
+         <ui:include src="header.xhtml" />
+       
+        <b:container style="padding-top: 20px;">
+            <h:form styleClass="form-signin" prependId="false" enctype="multipart/form-data">
+                
+                <h:message for="registerButton" ></h:message>
+                <h2>Applicant Registration</h2>
+                <b:inputText id="name" value="#{applicantController.name}" placeholder="Name"  required="true" requiredMessage="This field cannot be empty">
+                    <f:facet name="prepend">
+                        <b:icon name="user" />
+                    </f:facet>
+                </b:inputText>
+                <b:inputText id="email" value="#{applicantController.email}" placeholder="Email address" type="email" required="true" requiredMessage="This field cannot be empty">
+                    <f:facet name="prepend">
+                        <b:icon name="envelope" />
+                    </f:facet>
+                </b:inputText>
+                <b:inputText id="contact" value="#{applicantController.contact}" placeholder="Contact No."  required="true" requiredMessage="This field cannot be empty">
+                    
+                    <f:facet name="prepend">
+                        <b:icon name="phone-alt" />
+                    </f:facet>
+                </b:inputText>
+                <b:inputText id="address" value="#{applicantController.address}"  required="true" requiredMessage="This field cannot be empty">
+                    <f:facet name="prepend">
+                        <b:icon name="home" />
+                    </f:facet>
+                </b:inputText>
+                <b:row style="padding-top:5px">
+
+                <b:datepicker id="cdate3" mode="popup-icon"
+                              firstDay="1" value="#{applicantController.date_of_birth}" required="true"
+                              label-col-sm="4" col-sm="4" showButtonPanel="true" placeholder="Enter Date Of Birth" changeMonth="true" changeYear="true" large-screen="full-width" >
+                </b:datepicker></b:row>
+                <b:selectOneMenu value="#{applicantController.gender}">
+                    <f:selectItem itemLabel="Select Gender" itemValue="" />
+                    <f:selectItem itemLabel="Male" itemValue="male" />
+                    <f:selectItem itemLabel="Female" itemValue="female" />
+                </b:selectOneMenu>
+                <b:inputText id="password" value="#{applicantController.password}" placeholder="Password" type="password" required="true" required-message="This field cannot be empty">
+                     <f:facet name="prepend">
+                        <b:iconAwesome name="key" />
+                    </f:facet>
+                </b:inputText>
+               
+                <b:selectBooleanCheckbox value="true" caption="remember me"/>
+                <b:commandButton id="registerButton" look="primary btn-block" value="save" action="#{applicantController.save()}" icon="log-in" size="lg"/>
+                
+            </h:form>
+        </b:container>
+    </h:body>
+</html>

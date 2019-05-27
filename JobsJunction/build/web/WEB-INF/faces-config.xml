@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+    
+    <application>
+        <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+    </application>
+    
+    <navigation-rule>
+            <from-view-id>addApplicant.xhtml</from-view-id>
+            <navigation-case>
+                    <from-action>#{applicantController.save()}</from-action>
+                    <from-outcome>updateQualification</from-outcome>
+                    <to-view-id>updateQualification.xhtml</to-view-id>
+                    <redirect></redirect>
+            </navigation-case>
+            <navigation-case>
+                    <from-action>#{applicantController.save()}</from-action>
+                    <from-outcome>null</from-outcome>
+                    <to-view-id>addApplicant.xhtml</to-view-id>
+                    <redirect></redirect>
+            </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+            <from-view-id>updateQualification.xhtml</from-view-id>
+            <navigation-case>
+                    <from-action>#{qualificationController.save()}</from-action>
+                    <from-outcome>index</from-outcome>
+                    <to-view-id>index.xhtml</to-view-id>
+                    <redirect></redirect>
+            </navigation-case>
+            <navigation-case>
+                    <from-action>#{qualificationController.save()}</from-action>
+                    <from-outcome>null</from-outcome>
+                    <to-view-id>updateQualification.xhtml</to-view-id>
+                    <redirect></redirect>
+            </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+            <from-view-id>addCompany.xhtml</from-view-id>
+            <navigation-case>
+                    <from-action>#{companyController.save()}</from-action>
+                    <from-outcome>addJob</from-outcome>
+                    <to-view-id>addjob.xhtml</to-view-id>
+                    <redirect></redirect>
+            </navigation-case>
+            <navigation-case>
+                    <from-action>#{companyController.save()}</from-action>
+                    <from-outcome>null</from-outcome>
+                    <to-view-id>addCompany.xhtml</to-view-id>
+                    <redirect></redirect>
+            </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+            <from-view-id>jobs_list.xhtml</from-view-id>
+            <navigation-case>
+                    <from-action>#{jobConroller.showJob()}</from-action>
+                    <from-outcome>updatejob</from-outcome>
+                    <to-view-id>updatejob.xhtml</to-view-id>
+                    <redirect></redirect>
+            </navigation-case>
+            <navigation-case>
+                    <from-action>#{jobConroller.showJob()}</from-action>
+                    <from-outcome>null</from-outcome>
+                    <to-view-id>jobs_list.xhtml</to-view-id>
+                    <redirect></redirect>
+            </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+            <from-view-id>updatejob.xhtml</from-view-id>
+            <navigation-case>
+                    <from-action>#{jobConroller.upadteJob()}</from-action>
+                    <from-outcome>jobs_list</from-outcome>
+                    <to-view-id>jobs_list.xhtml</to-view-id>
+                    <redirect></redirect>
+            </navigation-case>
+            <navigation-case>
+                    <from-action>#{jobConroller.upadteJob()}</from-action>
+                    <from-outcome>null</from-outcome>
+                    <to-view-id>updatejob.xhtml</to-view-id>
+                    <redirect></redirect>
+            </navigation-case>
+    </navigation-rule>
+    
+</faces-config>
